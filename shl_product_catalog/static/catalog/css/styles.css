@@ -1,0 +1,347 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #2c3e50, #3498db); /* Deep blue to teal gradient */
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+h1, h2, h3, h4 {
+    color: #f1c40f; /* Bright yellow-gold for headings */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+h1 {
+    background: rgba(44, 62, 80, 0.9); /* Deep blue with transparency */
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: 2px solid #f1c40f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: #e74c3c; /* Red hover for contrast */
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.intro, .filters, .recommendation-form, .assessment-list, .create-form, .assessment-details {
+    margin: 40px auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro:hover, .filters:hover, .recommendation-form:hover, .assessment-list:hover, .create-form:hover, .assessment-details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.filters {
+    padding: 25px;
+    background: rgba(44, 62, 80, 0.9); /* Matches body gradient base */
+    border-radius: 10px;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.filter-row h3 {
+    margin: 0;
+    color: #f1c40f;
+    font-weight: 400;
+    flex: 0 0 auto;
+    padding-right: 10px;
+}
+
+.filter-row input[type="text"], .filter-row select {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    flex: 1 1 150px; /* Allow flexibility but set minimum width */
+}
+
+.filter-row input[type="text"]::placeholder, .filter-row select option {
+    color: #bdc3c7; /* Light gray placeholder */
+}
+
+.filter-row input[type="text"]:focus, .filter-row select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+
+.filter-row button {
+    padding: 10px 20px;
+    background: #1abc9c; /* Teal green */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    flex: 0 0 auto;
+}
+
+.filter-row button:hover {
+    background: #16a085;
+    transform: scale(1.05);
+}
+
+.filter-row a {
+    color: #ff6666; /* Light red for Reset all */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold; /* Make it bold */
+    border-radius: 5px;
+    transition: color 0.3s ease, background 0.3s ease;
+    background-color: aliceblue;
+    margin-bottom: 19px;
+}
+
+.filter-row a:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.recommendation-form form, .create-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+.recommendation-form input, .recommendation-form button,
+.create-form input, .create-form select, .create-form textarea, .create-form button,
+.assessment-details button {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-form input::placeholder, .create-form input::placeholder, .create-form textarea::placeholder {
+    color: #bdc3c7; /* Light gray placeholder */
+}
+
+.recommendation-form input:focus, .create-form input:focus, .create-form select:focus, .create-form textarea:focus {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+
+.recommendation-form button, .create-form button, .assessment-details button {
+    background: #e74c3c; /* Red */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.recommendation-form button:hover, .create-form button:hover, .assessment-details button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.categories li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.categories li:hover {
+    transform: translateY(-3px);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.assessment-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.assessment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.try-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #1abc9c; /* Teal green */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.try-button:hover {
+    background: #16a085;
+    transform: scale(1.05);
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #f1c40f;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+a:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.skills-container {
+    position: relative;
+}
+
+#skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease;
+}
+
+.skill-tag:hover {
+    transform: scale(1.05);
+}
+
+.skill-tag .remove-skill {
+    cursor: pointer;
+    color: #e74c3c;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.skill-tag .remove-skill:hover {
+    color: #c0392b;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.popup-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 15% auto;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    background: #1abc9c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.popup-content button:hover {
+    background: #16a085;
+    transform: scale(1.05);
+}

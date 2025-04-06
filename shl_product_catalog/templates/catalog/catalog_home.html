@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHL Product Catalog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'catalog/css/styles.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'catalog_home' %}">Home</a>
+            <a href="{% url 'create_assessment' %}">Create Assessment</a>
+        </div>
+    </div>
+
+    <h1>SHL Product Catalog</h1>
+    
+    <section class="intro">
+        <h2>Explore Our Assessments</h2>
+        <p>Discover tools to assess talent across industries and roles. (Working as of April 05, 2025)</p>
+    </section>
+
+    <section class="filters">
+        <div class="filter-row">
+            <h3>Search by keyword...</h3>
+            <input type="text" name="keyword" value="{{ keyword }}" placeholder="Keyword">
+            <button type="submit" form="filter-form">Search</button>
+        </div>
+        <div class="filter-row">
+            <h3>Search by choosing one or more...</h3>
+            <form id="filter-form" method="GET" action="">
+                <select name="job_family">
+                    <option value="">Job Family</option>
+                    {% for family in job_families %}
+                        <option value="{{ family }}" {% if selected_job_family == family %}selected{% endif %}>{{ family }}</option>
+                    {% endfor %}
+                </select>
+                <select name="job_level">
+                    <option value="">Job Level</option>
+                    {% for level in job_levels %}
+                        <option value="{{ level }}" {% if selected_job_level == level %}selected{% endif %}>{{ level }}</option>
+                    {% endfor %}
+                </select>
+                <select name="industry">
+                    <option value="">Industry</option>
+                    {% for ind in industries %}
+                        <option value="{{ ind }}" {% if selected_industry == ind %}selected{% endif %}>{{ ind }}</option>
+                    {% endfor %}
+                </select>
+                <select name="language">
+                    <option value="">Language</option>
+                    {% for lang in languages %}
+                        <option value="{{ lang }}" {% if selected_language == lang %}selected{% endif %}>{{ lang }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="filter-row">
+            <h3>Search by job by title...</h3>
+            <select name="job_category">
+                <option value="">Job Category</option>
+                <option value="Developer">Developer</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <button type="submit" form="filter-form">Search</button>
+            <a href="?">Reset all</a>
+        </div>
+    </section>
+
+    <section class="recommendation-form">
+        <h3>Get Personalized Recommendations</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="job_role">Job Role:</label>
+            <input type="text" id="job_role" name="job_role" placeholder="e.g., Entry-Level" required>
+            
+            <label for="industry">Industry:</label>
+            <input type="text" id="industry" name="industry" placeholder="e.g., Insurance" required>
+            
+            <label for="skills">Skills (comma-separated):</label>
+            <input type="text" id="skills" name="skills" placeholder="e.g., communication, writing" required>
+            
+            <button type="submit">Recommend Assessments</button>
+        </form>
+    </section>
+
+    <section class="assessment-list">
+        <h3>All Assessments</h3>
+        <div class="cards">
+            {% for assessment in assessments %}
+                <div class="assessment-card">
+                    <h4>{{ assessment.name }}</h4>
+                    <p><strong>Category:</strong> {{ assessment.category }}</p>
+                    <p><strong>Needed Skills:</strong> {{ assessment.skills }}</p>
+                    <p>{{ assessment.description }}</p>
+                    <a href="{% url 'try_assessment' assessment.id %}" class="try-button">Try It</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% if recommended_assessments %}
+    <section class="assessment-list">
+        <h3>Recommended Assessments</h3>
+        <div class="cards">
+            {% for assessment in recommended_assessments %}
+                <div class="assessment-card">
+                    <h4>{{ assessment.name }}</h4>
+                    <p><strong>Category:</strong> {{ assessment.category }}</p>
+                    <p><strong>Needed Skills:</strong> {{ assessment.skills }}</p>
+                    <p>{{ assessment.description }}</p>
+                    <a href="{% url 'try_assessment' assessment.id %}" class="try-button">Try It</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <script src="{% static 'catalog/js/scripts.js' %}"></script>
+</body>
+</html>

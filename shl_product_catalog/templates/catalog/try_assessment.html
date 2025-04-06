@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try {{ assessment.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'catalog/css/styles.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'catalog_home' %}">Home</a>
+            <a href="{% url 'create_assessment' %}">Create Assessment</a>
+            <a href="{% url 'recommendation_result' %}">Recommendations</a>
+        </div>
+    </div>
+
+    <h1>Try {{ assessment.name }}</h1>
+
+    <section class="assessment-details">
+        <h2>Assessment Details</h2>
+        <p><strong>Category:</strong> {{ assessment.category }}</p>
+        <p><strong>Job Family:</strong> {{ assessment.job_family|default:"Not specified" }}</p>
+        <p><strong>Job Level:</strong> {{ assessment.job_level|default:"Not specified" }}</p>
+        <p><strong>Industry:</strong> {{ assessment.industry|default:"Not specified" }}</p>
+        <p><strong>Language:</strong> {{ assessment.language|default:"Not specified" }}</p>
+        <p><strong>Needed Skills:</strong> {{ assessment.skills }}</p>
+        <p><strong>Description:</strong> {{ assessment.description }}</p>
+
+        <h3>Tasks to Complete</h3>
+        {% if assessment.task_file %}
+            <p><strong>Uploaded File:</strong> <a href="{{ assessment.task_file.url }}" target="_blank">Download Task File</a></p>
+        {% endif %}
+        {% if assessment.google_form_link %}
+            <p><strong>Google Form:</strong> <a href="{{ assessment.google_form_link }}" target="_blank">Complete Form</a></p>
+        {% endif %}
+
+        <button id="complete-button">Mark as Completed</button>
+    </section>
+
+    <div id="completion-popup" class="popup">
+        <div class="popup-content">
+            <h3>Congratulations!</h3>
+            <p>You have successfully completed the {{ assessment.name }} assessment.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <a href="{% url 'catalog_home' %}">Back to Catalog</a>
+
+    <script src="{% static 'catalog/js/scripts.js' %}"></script>
+    <script>
+        const catalogHomeUrl = "{% url 'catalog_home' %}";
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHL Assessment Recommendations</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'catalog/css/styles.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'catalog_home' %}">Home</a>
+            <a href="{% url 'create_assessment' %}">Create Assessment</a>
+            <a href="{% url 'recommendation_result' %}">Recommendations</a>
+        </div>
+    </div>
+
+    <h1>SHL Assessment Recommendations</h1>
+
+    <section class="results">
+        <h2>Your Recommendations</h2>
+        <p><strong>Job Role:</strong> {{ job_role }}</p>
+        <p><strong>Industry:</strong> {{ industry }}</p>
+        <p><strong>Skills:</strong> {{ skills|join:", " }}</p>
+        
+        {% if recommendations %}
+            <div class="cards">
+                {% for rec in recommendations %}
+                    <div class="assessment-card">
+                        <h4>{{ rec.name }}</h4>
+                        <p><strong>Category:</strong> {{ rec.category }}</p>
+                        <p>{{ rec.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No matching assessments found.</p>
+        {% endif %}
+        <a href="{% url 'catalog_home' %}">Back to Catalog</a>
+    </section>
+
+    <script src="{% static 'catalog/js/scripts.js' %}"></script>
+</body>
+</html>
