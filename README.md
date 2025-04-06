@@ -4,12 +4,12 @@
 
 <table>
   <tr>
-    <td><img src="catalog_screenshot.png" alt="Catalog Screenshot" width="400"/></td>
-    <td><img src="create_assessment_screenshot.png" alt="Create Assessment Screenshot" width="400"/></td>
+    <td><img src="shl_product_catalog.png" alt="Catalog Screenshot" width="400"/></td>
+    <td><img src="create_new_assessment.png" alt="Create Assessment Screenshot" width="400"/></td>
   </tr>
   <tr>
-    <td><img src="recommendation_form.png" alt="Recommendation Form" width="400"/></td>
-    <td><img src="assessment_output.png" alt="Assessment Output" width="400"/></td>
+    <td><img src="recommendation.png" alt="Recommendation Form" width="400"/></td>
+    <td><img src="Perform_Task.png" alt="Assessment Output" width="400"/></td>
   </tr>
 </table>
 
